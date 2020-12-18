@@ -4,8 +4,6 @@ name: Integration
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [main]
 
 jobs:
   main:
@@ -13,7 +11,7 @@ jobs:
     steps:
     - name: Slack notification success
       if: success()
-      uses: emmasax4/notify-slack-action@emmasax4_updates
+      uses: emmasax4/notify-slack-action@main
       with:
         slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
@@ -24,7 +22,7 @@ jobs:
 
     - name: Slack notification failure
       if: failure()
-      uses: emmasax4/notify-slack-action@emmasax4_updates
+      uses: emmasax4/notify-slack-action@main
       with:
         slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
