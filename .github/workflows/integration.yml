@@ -15,7 +15,7 @@ jobs:
       if: success()
       uses: emmasax4/notify-slack-action@main
       with:
-        slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+        slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
         color: '#00FFAA'
         username: 'github'
@@ -26,7 +26,7 @@ jobs:
       if: failure()
       uses: emmasax4/notify-slack-action@main
       with:
-        slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+        slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
         color: '#CC0000'
         username: 'github'
