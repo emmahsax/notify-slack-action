@@ -1,7 +1,9 @@
 const core = require('@actions/core');
 
-const SLACK_WEBHOOK = process.env.SLACK_WEBHOOK;
-const slack = require('slack-notify')(SLACK_WEBHOOK);
+const slack_webhook = core.getInput('slack_webhook', {
+  required: true
+});
+const slack = require('slack-notify')(slack_webhook);
 
 slack.onError = function (err) {
   core.error(`Error ${err}, action may still succeed though`);
@@ -61,25 +63,30 @@ async function run() {
       required: true
     });
 
+    const default_attachment = {
+      "title": `${process.env.GITHUB_REPOSITORY}`,
+      "title_link": `https://github.com/${process.env.GITHUB_REPOSITORY}`,
+      "color": attachment.color,
+      "text": `${process.env.GITHUB_REF}`,
+      "author_name": `${process.env.GITHUB_ACTOR}`,
+      "author_link": `https://github.com/${process.env.GITHUB_ACTOR}`,
+      "author_icon": `https://github.com/${process.env.GITHUB_ACTOR}.png`,
+      "footer": `action -> ${process.env.GITHUB_EVENT_NAME}`,
+      "thumb_url":"https://avatars0.githubusercontent.com/u/44036562?s=200&v=4"
+    }
+
+    var final_attachment = {};
+    if (attachment.length == 0) {
+      final_attachment = default_attachment;
+    } else {
+      final_attachment = attachment;
+    }
+
     slack.send({
       channel: channel,
       icon_url: icon_url,
       username: username,
-      text: `GitHub action (${process.env.GITHUB_WORKFLOW}) triggered\n`,
-      attachments: [
-        {
-          "title": `${process.env.GITHUB_REPOSITORY}`,
-          "title_link": `https://github.com/${process.env.GITHUB_REPOSITORY}`,
-          "color": attachment.color,
-          "text": `${process.env.GITHUB_REF}`,
-          "author_name": `${process.env.GITHUB_ACTOR}`,
-    			"author_link": `https://github.com/${process.env.GITHUB_ACTOR}`,
-    			"author_icon": `https://github.com/${process.env.GITHUB_ACTOR}.png`,
-          "footer": `action -> ${process.env.GITHUB_EVENT_NAME}`,
-          "thumb_url":"https://avatars0.githubusercontent.com/u/44036562?s=200&v=4"
-        },
-        attachment
-      ]
+      attachments: [ final_attachment ]
     });
   } catch (error) {
     core.setFailed(error.message);

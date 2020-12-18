@@ -1,16 +1,15 @@
 {
-  "name": "action-slacker",
+  "name": "notify-slack-action",
   "version": "1.0.0",
   "description": "send slack notification with advanced message format",
   "main": "index.js",
   "scripts": {
     "lint": "eslint index.js",
-    "package": "ncc build index.js -o dist",
-    "test": "eslint index.js && jest"
+    "build": "ncc build index.js -o dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cemkiy/action-slacker.git"
+    "url": "git+https://github.com/emmasax4/notify-slack-action.git"
   },
   "keywords": [
     "GitHub",
@@ -19,14 +18,14 @@
   ],
   "author": "GitHub",
   "license": "MIT",
-  "homepage": "https://github.com/cemkiy/action-slacker#readme",
+  "homepage": "https://github.com/emmasax4/notify-slack-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.6",
     "slack-notify": "^0.1.7"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.20.5",
-    "eslint": "^6.3.0",
-    "jest": "^24.9.0"
+    "@zeit/ncc": "^0.22.3",
+    "eslint": "^7.15.0",
+    "jest": "^26.6.3"
   }
 }
