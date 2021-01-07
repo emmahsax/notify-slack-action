@@ -4,14 +4,15 @@ name: Integration
 on:
   push:
     branches: [ main ]
-
+  pull_request: # do this for testing on the PR
+    branches: [main]
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
     - name: Slack notification success
       if: success()
-      uses: emmasax4/notify-slack-action@main
+      uses: emmasax4/notify-slack-action@update_packages
       with:
         slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
@@ -22,7 +23,7 @@ jobs:
 
     - name: Slack notification failure
       if: failure()
-      uses: emmasax4/notify-slack-action@main
+      uses: emmasax4/notify-slack-action@update_packages
       with:
         slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
         channel: '#general'
