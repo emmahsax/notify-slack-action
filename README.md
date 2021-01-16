@@ -4,6 +4,16 @@
 
 A [GitHub Action](https://github.com/features/actions) to send a message to a Slack channel that supports attachments like images.
 
+## Archival Notice
+
+This repository has been archived and designated as read-only. From GitHub's documentation:
+
+> This will make the emmasax4/notify-slack-action repository, issues, pull requests, labels, milestones, projects, wiki, releases, commits, tags, branches, reactions and comments read-only and disable any future comments. The repository can still be forked.
+
+For a similar GitHub Action that is _not_ archived, please visit the source of this project: https://github.com/cemkiy/action-slacker.
+
+To unarchive this repository at any time, please reach out to me at https://emmasax4.com/contact-me/.
+
 ## Configuration
 
 You must set a Slack webhook environment value in settings page of your repository in order to use without any problem. Please [see here](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets#creating-encrypted-secrets) to learn how to do it if you don't know already.
