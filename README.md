@@ -1,4 +1,4 @@
-![Test](https://github.com/emmasax4/notify-slack-action/workflows/Test/badge.svg) ![Integration](https://github.com/emmasax4/notify-slack-action/workflows/Integration/badge.svg)
+![Test](https://github.com/emmahsax/notify-slack-action/workflows/Test/badge.svg) ![Integration](https://github.com/emmahsax/notify-slack-action/workflows/Integration/badge.svg)
 
 # Slack - GitHub Action
 
@@ -8,11 +8,11 @@ A [GitHub Action](https://github.com/features/actions) to send a message to a Sl
 
 This repository has been archived and designated as read-only. From GitHub's documentation:
 
-> This will make the emmasax4/notify-slack-action repository, issues, pull requests, labels, milestones, projects, wiki, releases, commits, tags, branches, reactions and comments read-only and disable any future comments. The repository can still be forked.
+> This will make the emmahsax/notify-slack-action repository, issues, pull requests, labels, milestones, projects, wiki, releases, commits, tags, branches, reactions and comments read-only and disable any future comments. The repository can still be forked.
 
 For a similar GitHub Action that is _not_ archived, please visit the source of this project: https://github.com/cemkiy/action-slacker.
 
-To unarchive this repository at any time, please reach out to me at https://emmasax4.com/contact-me/.
+To unarchive this repository at any time, please reach out to me at https://emmasax.com/contact-me/.
 
 ## Configuration
 
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Slack notification
-      uses: emmasax4/notify-slack-action@main
+      uses: emmahsax/notify-slack-action@main
       with:
         # requirements fields for slack
         slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
@@ -71,7 +71,7 @@ If you want to show different messages based on succes or failure of previous st
 ```yaml
 - name: Slack notification Failure
   if: failure()
-  uses: emmasax4/notify-slack-action@main
+  uses: emmahsax/notify-slack-action@main
   with:
     slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
     channel: '#channel-name'
@@ -81,7 +81,7 @@ If you want to show different messages based on succes or failure of previous st
 
 - name: Slack notification Success
   if: success()
-  uses: emmasax4/notify-slack-action@main
+  uses: emmahsax/notify-slack-action@main
   with:
     slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
     channel: '#channel-name'
